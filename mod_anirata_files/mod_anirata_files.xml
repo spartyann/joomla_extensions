@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" client="site" method="upgrade">
+    <name>Anirata Files</name>
+    <creationDate>2023-07-10</creationDate>
+    <author>Yann Tassy</author>
+    <authorEmail>yann@tassy.pro</authorEmail>
+    <authorUrl>https://www.anirata.fr</authorUrl>
+    <license>MIT</license>
+    <version>1.0</version>
+    <description></description>
+    <files>
+        <filename module="mod_anirata_files">mod_anirata_files.php</filename>
+        <folder>tmpl</folder>
+        <filename>mod_anirata_files.xml</filename>
+    </files>
+
+    <config>
+         <fields name="params">
+            <fieldset name="basic">
+                <field
+                    name="files_path"
+                    type="textarea"
+                    label="Fichiers"
+                    filter="raw"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

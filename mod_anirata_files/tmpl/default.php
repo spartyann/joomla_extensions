@@ -2,61 +2,75 @@
 
 // No direct access to this file
 defined('_JEXEC') or die;
+use Joomla\Module\AnirataFiles\Site\ModAnirataHelper;
+use Joomla\CMS\Date\Date;
 
-$files_path = JPATH_BASE . '/' . $params->get('files_path');
+$files = ModAnirataHelper::getFiles($params);
+$displayModifiedDate = $params->get('display_modified_date') == "1";
+$displayCompact = $params->get('display_compact') == "1";
 
-$files = array_merge(glob($files_path . '/*'), glob($files_path . '/**/*'));
+?>
 
-function human_filesize($bytes, $dec = 2): string {
-    $size   = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
-    $factor = floor((strlen($bytes) - 1) / 3);
-    if ($factor == 0) $dec = 0;
+<ul class='list-group af-over-gray'>
 
-    return sprintf("%.{$dec}f %s", $bytes / (1024 ** $factor), $size[$factor]);
-}
-
-echo "
-
-<script>
-function filePreview(i)
-{
-
-}
-</script>
-
-<ul class='list-group'>
-";
-
+<?php
 foreach($files as $i => $file)
 {
-    if (is_dir($file)) continue;
+    $name = $file['name'];
+    $url = $file['url'];
+    $urlEncoded = $file['urlEncoded'];
+    $size = $file['size'];
+    $createdDate = $file['created_date'];
+    $modifiedDate = $file['modified_date'];
 
-    $name = substr($file, strlen($files_path) + 1);
-    $url = JURI::base() . htmlentities(substr($file, strlen(JPATH_BASE) + 1 ));
-    $urlEncoded = urlencode($url);
+	$jCreatedDate = $file['j_created_date'];
+    $jModifiedDate = $file['j_modified_date'];
 
-    $size = human_filesize(filesize($file));
+	if ($displayCompact)
+	{
+?>
+    <li class='list-group-item'>
+        <a href='<?= $url ?>' class="text-dark" target='_blank'>
+			<b><?= $name ?></b>
+		</a>
+        <a href='<?= $url ?>' target='_blank'><i class='fa fa-eye'></i></a>
+        <a href='<?= $url ?>' target='_blank' class='ms-1' download><i class='fa fa-download'></i></a>
 
-    echo "
-<li class='list-group-item'>
-    <b>$name ($size)</b>
-    <br/>
-    <a href='$url' target='_blank'><i class='fa fa-eye'></i> Ouvrir</a>
+        <?php if ($displayModifiedDate === true) { ?>
+            <small class="float-end"><?php echo $jModifiedDate->format('d M y'); ?></small>
+            
+        <?php } ?>
+    </li>
+<?php
+	}
+	else
+	{
+?>
 
-    <a href='$url' target='_blank' class='ms-3' download><i class='fa fa-download'></i> Télécharger</a>
-   
-</li>
-";
+    <li class='list-group-item'>
+		<a href='<?= $url ?>' class="text-dark" target='_blank'>
+			<b><?= $name ?></b>
+		</a>
+        <br/>
+        <?php if ($displayModifiedDate === true) { ?>
+            <small class="float-end"><?= $size ?> - <?php echo $jModifiedDate->format('d M Y - H:i'); ?></small>
+            
+        <?php } ?>
+        <a href='<?= $url ?>' target='_blank'><i class='fa fa-eye'></i> Ouvrir</a>
+        <a href='<?= $url ?>' target='_blank' class='ms-3' download><i class='fa fa-download'></i> Télécharger</a>
+    </li>
 
+<?php
+	}
 }
+?>
 
-echo "
 </ul>
-";
 
-/*
+
+<!--
 <div style='display: none'>
  <a target='_blank' class='ms-3' onclick='filePreview($i)'><i class='fa fa-eye'></i> Prévisualiser</a> 
         <iframe loading='lazy' src='https://docs.google.com/viewer?embedded=true&amp;hl=en&amp;url=$urlEncoded'></iframe>
  </div>
- */
+ -->

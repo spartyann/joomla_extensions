@@ -8,6 +8,7 @@
     <license>MIT</license>
     <version>1.0</version>
     <description></description>
+    <namespace path="src">Joomla\Module\AnirataFiles</namespace>
     <files>
         <filename module="mod_anirata_files">mod_anirata_files.php</filename>
         <folder>tmpl</folder>
@@ -22,6 +23,16 @@
                     type="textarea"
                     label="Fichiers"
                     filter="raw"
+                />
+                <field
+                    name="display_modified_date"
+                    type="checkbox"
+                    label="Afficher la date de modification"
+                />
+				<field
+                    name="display_compact"
+                    type="checkbox"
+                    label="Mode compacté"
                 />
             </fieldset>
         </fields>

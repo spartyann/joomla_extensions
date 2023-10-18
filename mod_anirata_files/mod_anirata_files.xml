@@ -34,6 +34,11 @@
                     type="checkbox"
                     label="Mode compacté"
                 />
+				<field
+                    name="display_image_preview"
+                    type="checkbox"
+                    label="Prévisualiser les images en tout petit"
+                />
             </fieldset>
         </fields>
     </config>

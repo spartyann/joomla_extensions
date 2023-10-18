@@ -8,6 +8,7 @@ use Joomla\CMS\Date\Date;
 $files = ModAnirataHelper::getFiles($params);
 $displayModifiedDate = $params->get('display_modified_date') == "1";
 $displayCompact = $params->get('display_compact') == "1";
+$displayImagePreview = $params->get('display_image_preview') == "1";
 
 ?>
 
@@ -26,8 +27,14 @@ foreach($files as $i => $file)
 	$jCreatedDate = $file['j_created_date'];
     $jModifiedDate = $file['j_modified_date'];
 
+	$isImage = $file['is_image'];
+
+	$displayImage = $displayImagePreview && $isImage && $size < 1024 * 1024 * 500; // 500Ko max for display
+	$imageCode = '';
+
 	if ($displayCompact)
 	{
+		if ($displayImage) $imageCode = "<img src='$url' style='height: 2em;' />";
 ?>
     <li class='list-group-item'>
         <a href='<?= $url ?>' class="text-dark" target='_blank'>
@@ -37,7 +44,12 @@ foreach($files as $i => $file)
         <a href='<?= $url ?>' target='_blank' class='ms-1' download><i class='fa fa-download'></i></a>
 
         <?php if ($displayModifiedDate === true) { ?>
-            <small class="float-end"><?php echo $jModifiedDate->format('d M y'); ?></small>
+            <small class="float-end text-nowrap">
+				<?php echo $imageCode; ?>
+				&nbsp; 
+				<?php echo $jModifiedDate->format('d M y'); ?>
+				
+			</small>
             
         <?php } ?>
     </li>
@@ -45,19 +57,29 @@ foreach($files as $i => $file)
 	}
 	else
 	{
+		if ($displayImage) $imageCode = "<img src='$url' style='max-height: 3em; min-width: 3em' />";
 ?>
 
     <li class='list-group-item'>
-		<a href='<?= $url ?>' class="text-dark" target='_blank'>
-			<b><?= $name ?></b>
-		</a>
-        <br/>
-        <?php if ($displayModifiedDate === true) { ?>
-            <small class="float-end"><?= $size ?> - <?php echo $jModifiedDate->format('d M Y - H:i'); ?></small>
-            
-        <?php } ?>
-        <a href='<?= $url ?>' target='_blank'><i class='fa fa-eye'></i> Ouvrir</a>
-        <a href='<?= $url ?>' target='_blank' class='ms-3' download><i class='fa fa-download'></i> Télécharger</a>
+		<div class="tbl-100">
+			<div class="td-100">
+				<a href='<?= $url ?>' class="text-dark" target='_blank'>
+					<b><?= $name ?></b>
+				</a>
+				<br/>
+				<?php if ($displayModifiedDate === true) { ?>
+					<small class="float-end"><?= $size ?> - <?php echo $jModifiedDate->format('d M Y - H:i'); ?></small>
+			
+				<?php } ?>
+				<a href='<?= $url ?>' target='_blank'><i class='fa fa-eye'></i> Ouvrir</a>
+				<a href='<?= $url ?>' target='_blank' class='ms-3' download><i class='fa fa-download'></i> Télécharger</a>
+			</div>
+			<?php if ($imageCode != '') { ?>
+				<div class="td" style="padding-left: 0.5em">
+					<?php echo $imageCode; ?>
+				</div>
+			<?php } ?>
+		</div>
     </li>
 
 <?php

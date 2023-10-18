@@ -44,16 +44,21 @@ class ModAnirataHelper {
             $created->setTimezone($timezone);
             $modified->setTimezone($timezone);
 
+			$extention = pathinfo($file, PATHINFO_EXTENSION);
+			$isImage = in_array(strtolower($extention), ['bmp','gif','jpg','png','jpeg','webp','svg']);
+			
             $res[] = [
                 'file' => $file,
                 'name' => $name,
+				'extention' => $extention,
                 'url' => $url,
                 'urlEncoded' => $urlEncoded,
                 'size' => $size,
                 'created_date' => $created,
                 'modified_date' => $modified,
 				'j_created_date' => new Date($created->format('c')),
-				'j_modified_date' => new Date($modified->format('c'))
+				'j_modified_date' => new Date($modified->format('c')),
+				'is_image' => $isImage
             ];
         }
 

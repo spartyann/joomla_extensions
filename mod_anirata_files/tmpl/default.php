@@ -21,6 +21,7 @@ foreach($files as $i => $file)
     $url = $file['url'];
     $urlEncoded = $file['urlEncoded'];
     $size = $file['size'];
+	$rsize = $file['rsize'];
     $createdDate = $file['created_date'];
     $modifiedDate = $file['modified_date'];
 
@@ -68,7 +69,7 @@ foreach($files as $i => $file)
 				</a>
 				<br/>
 				<?php if ($displayModifiedDate === true) { ?>
-					<small class="float-end"><?= $size ?> - <?php echo $jModifiedDate->format('d M Y - H:i'); ?></small>
+					<small class="float-end"><?= $rsize ?> - <?php echo $jModifiedDate->format('d M Y - H:i'); ?></small>
 			
 				<?php } ?>
 				<a href='<?= $url ?>' target='_blank'><i class='fa fa-eye'></i> Ouvrir</a>

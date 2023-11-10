@@ -36,7 +36,8 @@ class ModAnirataHelper {
             $url = Uri::base() . htmlentities(substr($file, strlen(JPATH_BASE) + 1 ));
             $urlEncoded = urlencode($url);
 
-            $size = self::humanFilesize(filesize($file));
+            $size = filesize($file);
+            $rsize = self::humanFilesize($size);
 
             $created = new \DateTime(date('c',filectime($file)));
             $modified = new \DateTime(date('c',filemtime($file)));
@@ -54,6 +55,7 @@ class ModAnirataHelper {
                 'url' => $url,
                 'urlEncoded' => $urlEncoded,
                 'size' => $size,
+                'rsize' => $rsize,
                 'created_date' => $created,
                 'modified_date' => $modified,
 				'j_created_date' => new Date($created->format('c')),

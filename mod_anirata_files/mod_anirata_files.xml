@@ -12,6 +12,7 @@
     <files>
         <filename module="mod_anirata_files">mod_anirata_files.php</filename>
         <folder>tmpl</folder>
+		<folder>src</folder>
         <filename>mod_anirata_files.xml</filename>
     </files>
 

@@ -3,6 +3,7 @@
 // No direct access to this file
 
 use Joomla\Module\AnirataCalendly\Site\ModAnirataCalendlyHelper;
+use Joomla\CMS\Date\Date;
 
 defined('_JEXEC') or die;
 
@@ -49,9 +50,27 @@ if (ModAnirataCalendlyHelper::isValidUUID($invitee_uuid) == false || ModAnirataC
 $cancelLink = 'https://calendly.com/cancellations/' . $invitee_uuid;
 $rescheduleLink = 'https://calendly.com/reschedulings/' . $invitee_uuid;
 
+
+$dateText = "";
+try {
+	if (ModAnirataCalendlyHelper::isValidCalendlyDate($event_start_time))
+	{
+		//2023-11-23T13:30:00+01:00
+
+		$date = new \JDate($event_start_time);
+		$dateText .= 'Rendez-vous le: ';
+		$dateText .= '<b>' . $date->format('l d F Y à H:i') . '</b>';
+		$dateText .= '<br/>';
+	}
+} catch (\Throwable $ex)
+{
+}
+
 ?>
 
 <p>
+	<?php echo $dateText; ?>
+	
 	Si vous souhaitez <b>annuler</b> le rendez-vous <a target="_blank" href="<?php echo htmlentities($cancelLink);?>">cliquez sur ce lien</a>.
 	<br/>
 	Si vous souhaitez <b>décaler</b> le rendez-vous <a target="_blank" href="<?php echo htmlentities($rescheduleLink);?>">cliquez sur ce lien</a>.

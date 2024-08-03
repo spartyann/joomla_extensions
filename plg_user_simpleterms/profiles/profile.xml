@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+	
+<form>
+	<fields name="simpleterms">
+		<fieldset name="simpleterms" label="PLG_USER_SIMPLETERMS_SLIDER_LABEL" >
+
+			<field
+				name="agreeterms"
+				type="checkboxes"
+				label="PLG_USER_SIMPLETERMS_FIELD_SIMPLETERMS_LABEL"
+				required="true"
+				checked="0"
+				>
+				<option value="agree">PLG_USER_SIMPLETERMS_FIELD_SIMPLETERMS_OPTION_LABEL</option>
+			</field>
+
+
+		</fieldset>
+	</fields>
+</form>

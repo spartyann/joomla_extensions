@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id:  -->
+<extension version="1.0" type="plugin" group="user" method="upgrade">
+	<name>plg_user_simpleterms</name>
+	<author>Yann Tassy</author>
+	<creationDate>2024-08</creationDate>
+	<license>MIT</license>
+	<authorEmail>yann@tassy.pro</authorEmail>
+	<authorUrl>www.yanntassy.fr</authorUrl>
+	<version>1.0.0</version>
+	<description>PLG_USER_SIMPLETERMS_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="simpleterms">simpleterms.php</filename>
+		<filename>index.html</filename>
+		<folder>profiles</folder>
+	</files>
+
+	<languages>
+		<language tag="en-GB">en-GB.plg_user_simpleterms.ini</language>
+		<language tag="en-GB">en-GB.plg_user_simpleterms.sys.ini</language>
+		
+		<language tag="fr-FR">fr-FR.plg_user_simpleterms.ini</language>
+		<language tag="fr-FR">fr-FR.plg_user_simpleterms.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="basic">
+
+				<field name="register-require-user" type="spacer"
+					label="PLG_USER_SIMPLETERMS_FIELD_NAME_REGISTER_REQUIRE_USER"
+				/>
+
+				<field name="register-require_simpleterms" type="list"
+					label="PLG_USER_SIMPLETERMS_FIELD_SIMPLETERMS_LABEL" default="0"
+				>
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+
+				<field name="profile-require-user" type="spacer"
+					label="PLG_USER_SIMPLETERMS_FIELD_NAME_PROFILE_REQUIRE_USER"
+				/>
+
+				<field name="profile-require_simpleterms" type="list"
+					label="PLG_USER_SIMPLETERMS_FIELD_SIMPLETERMS_LABEL" default="0"
+				>
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>

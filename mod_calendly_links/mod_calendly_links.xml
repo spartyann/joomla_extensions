@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.0" client="site" method="upgrade">
-    <name>Anirata Calendly</name>
+    <name>Calendly Links</name>
     <creationDate>2023-11-22</creationDate>
     <author>Yann Tassy</author>
     <authorEmail>yann@tassy.pro</authorEmail>
-    <authorUrl>https://www.anirata.fr</authorUrl>
+    <authorUrl>https://www.yanntassy.fr</authorUrl>
     <license>MIT</license>
     <version>1.0</version>
     <description></description>
-	<namespace path="src">Joomla\Module\AnirataCalendly</namespace>
+	<namespace path="src">Joomla\Module\CalendlyLinks</namespace>
     <files>
-        <filename module="mod_anirata_calendly">mod_anirata_calendly.php</filename>
+        <filename module="mod_calendly_links">mod_calendly_links.php</filename>
         <folder>tmpl</folder>
 		<folder>src</folder>
-        <filename>mod_anirata_calendly.xml</filename>
+        <filename>mod_calendly_links.xml</filename>
     </files>
 
     <config>

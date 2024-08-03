@@ -2,10 +2,10 @@
 
 // No direct access to this file
 defined('_JEXEC') or die;
-use Joomla\Module\AnirataFiles\Site\ModAnirataHelper;
+use Joomla\Module\TassyFiles\Site\ModTassyHelper;
 use Joomla\CMS\Date\Date;
 
-$files = ModAnirataHelper::getFiles($params);
+$files = ModTassyHelper::getFiles($params);
 $displayModifiedDate = $params->get('display_modified_date') == "1";
 $displayCompact = $params->get('display_compact') == "1";
 $displayImagePreview = $params->get('display_image_preview') == "1";

@@ -1,8 +1,8 @@
 <?php
 
-namespace Joomla\Module\AnirataCalendly\Site;
+namespace Joomla\Module\CalendlyLinks\Site;
 
-class ModAnirataCalendlyHelper {
+class ModCalendlyLinksHelper {
 
 	public static function isValidUUID(string $uuid = null): bool
 	{

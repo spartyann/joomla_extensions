@@ -1,12 +1,12 @@
 <?php
 
-namespace Joomla\Module\AnirataFiles\Site;
+namespace Joomla\Module\TassyFiles\Site;
 
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Date\Date;
 
-class ModAnirataHelper {
+class ModTassyHelper {
 
     public static function humanFilesize($bytes, $dec = 2): string {
         $size   = array('B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');

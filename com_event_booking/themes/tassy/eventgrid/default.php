@@ -199,8 +199,8 @@ try {
 
 		$mailer->addRecipient($config->get( 'mailfrom' ));
 
-		$body   = "Erreur sur le site dans le Theme Anirata de com_event_booking\n\n" . $ex->__toString();
-		$mailer->setSubject('Erreur sur le site dans le Theme Anirata de com_event_booking');
+		$body   = "Erreur sur le site dans le Theme Yann Tassy de com_event_booking\n\n" . $ex->__toString();
+		$mailer->setSubject('Erreur sur le site dans le Theme Yann Tassy de com_event_booking');
 		$mailer->setBody($body);
 		$mailer->isHtml(false);
 

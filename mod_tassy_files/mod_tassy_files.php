@@ -20,4 +20,4 @@ $document->addStyleDeclaration("
 .af-over-gray .white-space-nowrap { white-space: nowrap!important; }
 ");
 
-require ModuleHelper::getLayoutPath('mod_anirata_files', $params->get('layout', 'default'));
+require ModuleHelper::getLayoutPath('mod_tassy_files', $params->get('layout', 'default'));
